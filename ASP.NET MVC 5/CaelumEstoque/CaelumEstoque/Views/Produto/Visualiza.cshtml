@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+
+Id: @ViewBag.Produto.Id<br />
+Nome: @ViewBag.Produto.Nome<br />
+Quantidade: @ViewBag.Produto.Quantidade<br />
+Preço: @ViewBag.Produto.Preco<br />
+Descricao: @ViewBag.Produto.Descricao<br />
+Categoria: @ViewBag.Produto.Categoria.Nome<br />
+
+<!--Podemos utilizar somente /Produto na URL, pois a rota padrão
+            assume que, quando omitido o nome da action, a action a ser chamada
+            é a Index
+        <a href="/Produto">Voltar para a lista</a>-->
+<!--Gerando dinamicamente o código do link para voltar.
+    Deve-se passar o texto do link, o nome da action e o nome do controller-->
+
+<!--
+//Html.ActionLink("Voltar para a lista de produtos", "Index", "Produto")
+    -->
+
+<!--Para utilizarmos as rotas customizadas no roteamento das páginas utilizamos como a seguir:-->
+@Html.RouteLink("Voltar para lista de produtos", "ListaProdutos")

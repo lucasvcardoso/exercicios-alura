@@ -1,0 +1,73 @@
+﻿<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    function decrementa(produtoId){
+        var url = "@Url.Action("DecrementaQtd","Produto")";
+        var params = { id: produtoId };
+        $.post(url, params, atualiza);
+    }
+
+    function atualiza(resposta) {
+        var elemento = $("#quantidade" + resposta.Id);
+        elemento.html(resposta.Quantidade);
+    }
+</script>
+
+@model IList<CaelumEstoque.Models.Produto>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome do Produto</th>
+                <th>Quantidade</th>
+                <th>Preco</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Neste ponto, produto pode ser criado com o tipo da Model Produto,
+            ou como var, porém é necessário fazer cast ao passar como texto do ActionLink:
+
+                foreach (CaelumEstoque.Models.Produto produto in ViewBag.ListaProdutos)
+                {
+                    ...
+                    Html.ActionLink(produto.Nome, "Visualiza", "Produto", new { id = produto.Id })
+                }
+
+                OU:
+
+                foreach (var produto in ViewBag.ListaProdutos)
+                {
+                    ...
+                    Html.ActionLink((string)produto.Nome, "Visualiza", "Produto", new { id = produto.Id })
+                }
+
+            Podemos ainda utilizar a variável do framework chamada Model para acessar o valor,
+            que deve ser enviado por meio da Model, como argumento do método View() na action, como utilizado abaixo.
+            Também devemos setar o tipo da model no início do arquivo da View, como demonstrado na primeira linha desta
+            página
+                 -->
+            @foreach (var produto in Model)
+            {
+                <tr>
+                    <td>@produto.Id</td>
+                    <td>
+                        <!--Pode-se passar o ID do produto para a view diretamente, sem precisar enviar
+                        URL params. Rota padrão aceita o seguinte:
+                        /<controller>/<action>/<id [opcional]>
+                    <a href="/Produtos/Visualiza/produto.Id-->
+                        <!--Gerando dinamicamente o código dos links
+                        Html.ActionLink(produto.Nome, "Visualiza", new { id = produto.Id })
+                        </a>-->
+                        <!--Para utilizarmos as rotas customizadas, devemos fazer como abaixo:-->
+                        @Html.RouteLink(produto.Nome, "VisualizaProduto", new { id = produto.Id })
+                    </td>
+                    <td id="quantidade@(produto.Id)">@produto.Quantidade</td>
+                    <td>@produto.Preco</td>
+                    <td>
+                        <a href="#" onclick="decrementa(@produto.Id);">Decrementar</a>
+                    </td>
+                </tr>
+            }   
+        </tbody>
+
+    </table>

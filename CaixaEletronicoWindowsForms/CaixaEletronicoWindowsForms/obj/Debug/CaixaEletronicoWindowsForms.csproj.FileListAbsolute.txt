@@ -1,0 +1,10 @@
+D:\workspace\exercicios-alura\CaixaEletronicoWindowsForms\CaixaEletronicoWindowsForms\bin\Debug\CaixaEletronicoWindowsForms.exe.config
+D:\workspace\exercicios-alura\CaixaEletronicoWindowsForms\CaixaEletronicoWindowsForms\bin\Debug\CaixaEletronicoWindowsForms.exe
+D:\workspace\exercicios-alura\CaixaEletronicoWindowsForms\CaixaEletronicoWindowsForms\bin\Debug\CaixaEletronicoWindowsForms.pdb
+D:\workspace\exercicios-alura\CaixaEletronicoWindowsForms\CaixaEletronicoWindowsForms\obj\Debug\CaixaEletronicoWindowsForms.csprojResolveAssemblyReference.cache
+D:\workspace\exercicios-alura\CaixaEletronicoWindowsForms\CaixaEletronicoWindowsForms\obj\Debug\Caelum.CaixaEletronico.CadastroDeContas.resources
+D:\workspace\exercicios-alura\CaixaEletronicoWindowsForms\CaixaEletronicoWindowsForms\obj\Debug\Caelum.CaixaEletronico.Form1.resources
+D:\workspace\exercicios-alura\CaixaEletronicoWindowsForms\CaixaEletronicoWindowsForms\obj\Debug\Caelum.CaixaEletronico.Properties.Resources.resources
+D:\workspace\exercicios-alura\CaixaEletronicoWindowsForms\CaixaEletronicoWindowsForms\obj\Debug\CaixaEletronicoWindowsForms.csproj.GenerateResource.Cache
+D:\workspace\exercicios-alura\CaixaEletronicoWindowsForms\CaixaEletronicoWindowsForms\obj\Debug\CaixaEletronicoWindowsForms.exe
+D:\workspace\exercicios-alura\CaixaEletronicoWindowsForms\CaixaEletronicoWindowsForms\obj\Debug\CaixaEletronicoWindowsForms.pdb
