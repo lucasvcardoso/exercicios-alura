@@ -29,11 +29,7 @@ botaoAdicionar.addEventListener("click", function(event){
         return;
     }
 
-    var pacienteTr = montaTr(paciente);
-   
-    var tabela = document.querySelector("#tabela-pacientes");
-
-    tabela.appendChild(pacienteTr);
+    adicionaPacienteNaTabela(paciente);
     
     form.reset();
 
@@ -43,6 +39,12 @@ botaoAdicionar.addEventListener("click", function(event){
     //Para utilizar uma função nomeada, passamos o nome da função
     //sem os parênteses como param do addEventListener()
 });
+
+function adicionaPacienteNaTabela(paciente){
+    var pacienteTr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+}
 
 function obtemPacienteDoFormulario(form){
     var paciente = {
@@ -55,6 +57,8 @@ function obtemPacienteDoFormulario(form){
 
     return paciente;
 }
+
+
 
 function montaTr(paciente){
     var pacienteTr = document.createElement("tr");
