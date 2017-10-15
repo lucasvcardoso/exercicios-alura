@@ -1,0 +1,128 @@
+.titulo-pagina {
+    font-size: 60px;
+    background-color: #851944;
+    color: #FAFFFA;
+    text-align: center;
+    font-family: "Open Sans Condensed", "Arial", sans-serif;
+    padding: 25px;
+    margin: 0px;
+    border-bottom: 10px solid black;
+    text-transform: uppercase; 
+}
+
+h2 {                
+    font-size: 30px;
+    font-family: "Open Sans Condensed", "Arial", sans-serif;
+    clear: both;
+}
+
+body {
+    font-family: "Crimson Text", "Times New Roman", serif;
+    background-color: #F2FFFC;
+}
+
+p {
+    text-align: justify;
+    margin: 20px 0;
+}
+
+.nav {
+    background-color: #3C1D3D;
+    color: #F2FFFC;
+    text-align: center;   
+    top: 310px;
+    width: 15%;
+}
+
+.minha-foto {
+     top: 0px;
+}
+
+.nav, .minha-foto {        
+    box-sizing: border-box;
+    border-bottom: 10px solid black;
+    border-left: 10px solid black; 
+    position: absolute;
+   
+    right: 0px;
+}
+
+.nav a {
+    color: inherit;
+    font-family: "Open Sans Condensed", sans-serif;
+    text-decoration: none;
+    text-transform: lowercase;
+}
+
+.nav h1 {
+    font-size: 30px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.icones-sociais li {
+    display: inline-block;
+}
+
+.icones-sociais a {   
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    /*text-indent: -9999px;*/
+    font-size: 0px;
+}
+
+.github{
+     background-image: url(../images/github.png);
+}
+
+.twitter{
+     background-image: url(../images/twitter.png);
+}
+
+.linkedin{
+     background-image: url(../images/linkedin.png);
+}
+
+.footer-pagina {
+    background-color: #000;
+    color: #F2FFFC;   
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+}
+
+main a {
+    color: #851944;
+}
+
+blockquote, aside{
+    padding: 20px;
+}
+
+.container {
+    width: 840px;    
+    margin: 0 auto;
+    padding: 40px 0;
+    padding-bottom: 80px;
+    
+}
+
+body {
+     line-height: 1.5;
+}
+
+strong {
+    font-weight: bold;    
+}
+
+em {
+    font-style: italic;
+}
+
+main {
+    float: left;
+    width: 85%;    
+}
