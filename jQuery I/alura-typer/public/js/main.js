@@ -9,6 +9,7 @@ $(
     atualizaTamanhoFrase();
     inicializaContadores();
     inicializaCronometro();
+    inicializaMarcadores();
     //Para eventos mais comuns, como click e focus, temos funções próprias
     $("#botao-reiniciar").click(reiniciaJogo);
 });
@@ -46,8 +47,24 @@ function inicializaCronometro() {
                 //Podemos utilizar este ID do setInterval para fazê-lo parar
                 clearInterval(cronometroId);
                 $("#botao-reiniciar").attr("disabled", false);
+                campo.toggleClass("campo-desativado");
             }
         }, 1000);
+    });
+}
+
+function inicializaMarcadores() {
+    var frase = $(".frase").text();
+    campo.on("input", function(){
+        var digitado = campo.val();
+        var comparavel = frase.substr(0, digitado.length);
+        if(digitado == comparavel){
+            campo.addClass("campo-correto");
+            campo.removeClass("campo-errado");
+        }else{
+            campo.addClass("campo-errado");   
+            campo.removeClass("campo-correto");
+        }
     });
 }
 
@@ -58,4 +75,7 @@ function reiniciaJogo() {
     $("#contador-palavras").text("0");
     $("#contador-caracteres").text("0");
     inicializaCronometro();
+    campo.toggleClass("campo-desativado");
+    campo.removeClass("campo-correto");
+    campo.removeClass("campo-errado");
 }
