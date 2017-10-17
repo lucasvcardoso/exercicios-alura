@@ -46,11 +46,16 @@ function inicializaCronometro() {
                 campo.attr("disabled", true);
                 //Podemos utilizar este ID do setInterval para fazê-lo parar
                 clearInterval(cronometroId);
-                $("#botao-reiniciar").attr("disabled", false);
-                campo.toggleClass("campo-desativado");
+                finalizaJogo();                
             }
         }, 1000);
     });
+}
+
+function finalizaJogo() {
+    $("#botao-reiniciar").attr("disabled", false);
+    campo.toggleClass("campo-desativado");
+    inserePlacar();
 }
 
 function inicializaMarcadores() {
@@ -79,3 +84,4 @@ function reiniciaJogo() {
     campo.removeClass("campo-correto");
     campo.removeClass("campo-errado");
 }
+
