@@ -1,3 +1,13 @@
+$("#botao-placar").click(mostraPlacar);
+
+function mostraPlacar(){
+    // $(".placar").toggle();//Funciona como toggleClass(), para mostrar/ocultar o elemento
+    // $(".placar").slideDown(600);//Mostra o elemento com uma animação para baixo. O oposto é slideUp(), que oculta o elemento.
+    //Dá toggle em slideUp() e slideDown(). stop() serve para interomper alguma animação que já esteja correndo, e evitar enfileirar várias animações, que seriam executadas uma após a outra até a última.
+    $(".placar").stop().slideToggle(600);
+    scrollPlacar();
+}
+
 function inserePlacar() {
     //find() busca dentro do elemento selecionado. Neste caso procura um tbody dentro da section que tem a classe .placar
     var corpoTabela = $(".placar").find("tbody");
@@ -6,11 +16,30 @@ function inserePlacar() {
     var linha = novaLinha(usuario, numPalavras);
     linha.find(".botao-remover").click(removeLinha);
     corpoTabela.prepend(linha);
+    $(".placar").slideDown(600);
+    scrollPlacar();
+}
+
+function scrollPlacar(){
+    var posicao = $(".placar").offset().top;//Pega a posição do topo do elemento.
+    //animate() anima o elemento. O método recebe um JSON com as propriedades a serem animadas e um número de milissegundos para a duração da animação.
+    $("html").animate(
+    {
+        scrollTop: posicao + "px"//scrollTop deve conter um valor em px para a animação.
+    }, 1000);
 }
 
 function removeLinha() {
     event.preventDefault();
-    $(this).parent().parent().remove();
+    var linha = $(this).parent().parent();
+    linha.fadeOut(1000);//Remove com animação de fade out. Temos como opções também fadeIn() para exibir e fadeToggle().
+    setTimeout(function(){
+        linha.remove();
+    },1000);
+    //Pode-se também passar o linhe.remove() dentro de uma function anônima como argumento para o fadeOut(), que executaria a function() assim que terminasse a animação. Like so:
+    // linha.fadeOut(1000,function(){
+    //     linha.remove();
+    // });
 }
 
 function novaLinha(usuario, palavras) {
