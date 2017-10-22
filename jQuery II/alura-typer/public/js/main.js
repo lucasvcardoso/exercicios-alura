@@ -12,14 +12,15 @@ $(
     inicializaMarcadores();
     //Para eventos mais comuns, como click e focus, temos funções próprias
     $("#botao-reiniciar").click(reiniciaJogo);
+    atualizaPlacar();
 });
 
 function atualizaTamanhoFrase() {
     //Usamos text() para pegar ou setar o valor de texto de tags de exibição de texto, como span, h1 ou p.
     var frase = $(".frase").text();
     var numPalavras = frase.split(/\S+/).length;
-    var tamanhoFrase = $("tamanho-frase");
-    tamanhoFrase.text("numPalavras");
+    var tamanhoFrase = $("#tamanho-frase");
+    tamanhoFrase.text(numPalavras);
 }    
 
 function inicializaContadores() {
@@ -33,10 +34,15 @@ function inicializaContadores() {
     });
 }
 
+function atualizaTempoInicial(tempo) {
+    $("#tempo-digitacao").text(tempo);
+    tempoInicial = tempo;
+}
+
 function inicializaCronometro() {    
-    var tempoRestante = $("#tempo-digitacao").text();
     //Podemos utilizar a função one() para executar o código do evento apenas na primeira vez que o evento ocorrer
     campo.one("focus", function(){
+        var tempoRestante = $("#tempo-digitacao").text();
         $("#botao-reiniciar").attr("disabled", true);
         //Todo setInterval retorna seu próprio ID, podemos guardá-lo em uma variável.
         var cronometroId = setInterval(function(){
@@ -59,8 +65,8 @@ function finalizaJogo() {
 }
 
 function inicializaMarcadores() {
-    var frase = $(".frase").text();
     campo.on("input", function(){
+        var frase = $(".frase").text();
         var digitado = campo.val();
         var comparavel = frase.substr(0, digitado.length);
         if(digitado == comparavel){
