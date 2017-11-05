@@ -14,11 +14,11 @@ namespace LojaAPI.Controllers
         /*
          Por convenção nomeia-se os métodos do controller de acordo com os verbos HTTP aos quais esses métodos responderão
              */
-        public string Get(int id)
+        public Carrinho Get(int id)
         {
             CarrinhoDAO dao = new CarrinhoDAO();
-            Carrinho carrinho = dao.Busca(1);
-            return carrinho.ToXml();
+            Carrinho carrinho = dao.Busca(id);
+            return carrinho;
         }
     }
 }
