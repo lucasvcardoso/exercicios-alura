@@ -20,5 +20,14 @@ namespace LojaAPI.Controllers
             Carrinho carrinho = dao.Busca(id);
             return carrinho;
         }
+
+        //FromBodyAttribute sinaliza que os dados para o POST virão do Body da
+        //requisição
+        public string Post([FromBody]Carrinho carrinho)
+        {
+            CarrinhoDAO dao = new CarrinhoDAO();
+            dao.Adiciona(carrinho);
+            return "sucesso";
+        }
     }
 }
