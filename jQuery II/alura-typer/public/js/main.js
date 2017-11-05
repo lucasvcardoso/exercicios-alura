@@ -13,6 +13,15 @@ $(
     //Para eventos mais comuns, como click e focus, temos funções próprias
     $("#botao-reiniciar").click(reiniciaJogo);
     atualizaPlacar();
+    
+    $("#usuarios").selectize({
+        create: true,
+        sortField: "text"
+    });
+
+    $(".tooltip").tooltipster({
+        trigger: "custom"
+    });
 });
 
 function atualizaTamanhoFrase() {

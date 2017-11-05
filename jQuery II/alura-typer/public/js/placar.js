@@ -12,7 +12,7 @@ function mostraPlacar(){
 function inserePlacar() {
     //find() busca dentro do elemento selecionado. Neste caso procura um tbody dentro da section que tem a classe .placar
     var corpoTabela = $(".placar").find("tbody");
-    var usuario = "Lucas";
+    var usuario = $("#usuarios").val();
     var numPalavras = $("#contador-palavras").text();
     var linha = novaLinha(usuario, numPalavras);
     linha.find(".botao-remover").click(removeLinha);
@@ -81,6 +81,15 @@ function sincronizaPlacar() {
 
     $.post("http://localhost:3000/placar", dados, function(){
         console.log("Placar sincronizado com sucesso.");
+        $(".tooltip").tooltipster("open");
+    })
+    .fail(function(){
+        $(".tooltip").tooltipster("open").tooltipster("content","Falha ao sincronizar");
+    })
+    .always(function(){
+        setTimeout(function() {
+            $(".tooltip").tooltipster("close");
+        }, 1200);
     });
 }
 
