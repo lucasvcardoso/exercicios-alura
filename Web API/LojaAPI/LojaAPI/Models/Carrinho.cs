@@ -12,7 +12,7 @@ namespace LojaAPI.Models
     {
         public List<Produto> Produtos { get; set; }
         public string Endereco { get; set; }
-        public long Id { get; set; }
+        public long Id { get; set; }    
 
         public Carrinho()
         {
@@ -50,6 +50,13 @@ namespace LojaAPI.Models
         public void TrocaEndereco(string endereco)
         {
             this.Endereco = endereco;
+        }
+
+        public void TrocaQuantidade(Produto produto)
+        {
+            var produtoCarregado = Produtos.FirstOrDefault(p => p.Id == produto.Id);
+
+            produtoCarregado.Quantidade = produto.Quantidade;
         }
     }
 }
