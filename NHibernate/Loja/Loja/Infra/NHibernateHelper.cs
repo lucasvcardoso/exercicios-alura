@@ -23,7 +23,7 @@ namespace Loja.Infra
         public static void GeraSchema()
         {
             Configuration cfg = RecuperaConfiguracao();
-            new SchemaExport(cfg).Create(true, true);
+            new SchemaExport(cfg).Create(useStdOut:true, execute:true);
         }
     }
 }
