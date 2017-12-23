@@ -16,8 +16,10 @@ namespace Loja
         public static void Main(string[] args)
         {
             //NHibernateHelper.GeraSchema();           
+            TestaDelete(4);
+            TestaDelete(5);
+            Console.ReadLine();
 
-            TestaAdiciona();
         }
        
         public static void InsereUsuarioCriandoFactorySessionTransaction()
@@ -37,7 +39,6 @@ namespace Loja
 
             session.Close();
 
-            Console.Read();
         }
 
         private static void TestaAdiciona()
@@ -52,22 +53,21 @@ namespace Loja
 
             session.Close();
 
-            Console.Read();
         }
 
-        public static void TestaDelete()
+        public static void TestaDelete(int id)
         {
             ISession session = NHibernateHelper.AbreSession();
 
             UsuarioDAO usuarioDao = new UsuarioDAO(session);
 
-            Usuario novoUsuario = usuarioDao.BuscaPorId(1);
+            Usuario novoUsuario = usuarioDao.BuscaPorId(id);
 
             usuarioDao.Remove(novoUsuario);
 
             session.Close();
 
-            Console.Read();
         }
     }
 }
+
