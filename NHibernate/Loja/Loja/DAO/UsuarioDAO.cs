@@ -39,5 +39,16 @@ namespace Loja.DAO
             //Busca um Usuario filtrando pelo id informado
             return _session.Get<Usuario>(id);
         }
+
+        public void TestaPersistent()
+        {
+            ITransaction trans = _session.BeginTransaction();
+
+            Usuario user = _session.Get<Usuario>(6);
+
+            user.Nome = "Lucas Vieira Cardoso";
+
+            trans.Commit();
+        }
     }
 }

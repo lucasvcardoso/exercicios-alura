@@ -3,6 +3,7 @@
                    assembly="Loja"
                    namespace="Loja.Entidades">
   <class name="Usuario">
+    <cache usage="nonstrict-read-write"/>
     <id name="Id">
       <generator class="identity"/>
     </id>

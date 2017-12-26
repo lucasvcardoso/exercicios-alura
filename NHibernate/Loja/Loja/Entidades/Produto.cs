@@ -10,6 +10,7 @@ namespace Loja.Entidades
     {
         public virtual int Id { get; set; }
         public virtual string Nome { get; set; }
-        public virtual double Preco { get; set; }
+        public virtual decimal Preco { get; set; }
+        public virtual Categoria Categoria { get; set; }
     }
 }

@@ -14,5 +14,11 @@
       Server=.\sqlexpress;Database=loja;User Id=sa;Password=C0g1t0.3rg0.5um*;
     </property>
     <property name="show_sql">true</property>
+    <property name="format_sql">true</property>
+    <property name="cache.use_second_level_cache">true</property>
+    <!--Para setar o cache provider, depois de instalado o plugin, devemos informar o nome da classe e o nome do assembly da classe do provedor de cache-->
+    <property name="cache.provider_class">NHibernate.Caches.SysCache.SysCacheProvider, NHibernate.Caches.SysCache</property>
+    <!--Para setar o NHibernate para cachear resultados de queries, utilizamos a seguinte propriedade: -->
+    <property name="cache.use_query_cache">true</property>
   </session-factory>
 </hibernate-configuration>

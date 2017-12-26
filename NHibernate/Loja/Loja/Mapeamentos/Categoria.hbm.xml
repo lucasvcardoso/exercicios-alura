@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Loja"
+                   namespace="Loja.Entidades">
+  <class name="Categoria">
+    <!--usage pode ser read-only, 
+    read-write(modificação segura, utilizando locks dentro do cache. Perde-se performance),
+    ou nonstrict-read-write(modificação não-segura, menos locks, mais performática)-->
+    <cache usage="read-write"/>
+    <id name="Id">
+      <generator class="identity"/>
+    </id>
+    <property name="Nome"/>
+    <!--propriedade fetch pode ser SELECT (lazy load) ou JOIN (eager load)-->
+    <!--batch-size define o tamanho do lote que sera buscado a cada consulta no banco de dados. Pode ser utilizado
+        alternativamente ao join fetch. Join fetch traz todos os itens do relacionamento em uma só query, batchs-size traz o número configurado de itens.-->
+    <bag name="Produtos" inverse="true" batch-size="10">
+      <!--Quando guardamos um relacionamento em cache, o NHibernate guarda só o Id, e faz get() para cada item do relacionamento.
+      Para guardar as entidades completas no cache, devemos configurar o mapping da entidade para usar o cache também.-->
+      <cache usage="nonstrict-read-write"/>
+      <key column="CategoriaId"/>
+      <one-to-many class="Produto"/>
+    </bag>
+  </class>
+</hibernate-mapping>
