@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Passagens;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,18 +9,16 @@ namespace Passagens
 {
     public class ClienteDAO
     {
-        private List<Cliente> clientes = new List<Cliente>();
+        private static List<Cliente> clientes = new List<Cliente>();
 
         public void Add (Cliente c)
         {
-            this.clientes.Add(c);
+            ClienteDAO.clientes.Add(c);
         }
 
         public Cliente Buscar(string nome)
         {
-            var resultado = from c in clientes
-                            where c.Nome.Equals(nome)
-                            select c;
+            var resultado = ClienteDAO.clientes.Where(c => c.Nome.Equals(nome)).FirstOrDefault();
             return (Cliente)resultado;
         }
     }
