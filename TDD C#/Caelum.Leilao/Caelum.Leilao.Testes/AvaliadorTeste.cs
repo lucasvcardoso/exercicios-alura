@@ -56,5 +56,145 @@ namespace Caelum.Leilao
             double expected = 400;
             Assert.AreEqual(expected, media, 0.00001);
         }
+
+        [Test]
+        public void DeveAvaliarUmLance()
+        {
+            //Arrange
+            Usuario joao = new Usuario("Joao");
+
+            Leilao leilao = new Leilao("Playstation 3 Novo");
+            leilao.Propoe(new Lance(joao, 250));
+
+            //Act
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avalia(leilao);
+
+            //Assert
+            Assert.AreEqual(250, leiloeiro.MaiorDeTodos, 0.00001);
+            Assert.AreEqual(250, leiloeiro.MenorDeTodos, 0.00001);
+        }
+
+        [Test]
+        public void DeveEntenderLancesEmOrdemAleatoria()
+        {
+            //Arrange
+            Usuario joao = new Usuario("Joao");
+
+            Leilao leilao = new Leilao("Playstation 3 Novo");
+
+            double[] lances = { 200, 150, 120, 700, 630, 230 };
+
+            foreach (double lance in lances)
+            {
+                leilao.Propoe(new Lance(joao, lance));
+            }
+
+
+            //Act
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avalia(leilao);
+
+            //Assert
+            Assert.AreEqual(120, leiloeiro.MenorDeTodos, 0.00001);
+            Assert.AreEqual(700, leiloeiro.MaiorDeTodos, 0.00001);
+        }
+
+        [Test]
+        public void DeveEntenderLancesEmOrdemDecrescente()
+        {
+            //Arrange
+            Usuario joao = new Usuario("Joao");
+
+            Leilao leilao = new Leilao("Playstation 3 Novo");
+
+            double[] lances = { 600,500,400,300,200,100 };
+
+            foreach (double lance in lances)
+            {
+                leilao.Propoe(new Lance(joao, lance));
+            }
+
+
+            //Act
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avalia(leilao);
+
+            //Assert
+            Assert.AreEqual(100, leiloeiro.MenorDeTodos, 0.00001);
+            Assert.AreEqual(600, leiloeiro.MaiorDeTodos, 0.00001);
+        }
+
+        [Test]
+        public void DevePegarOsTresMaioresEmQuatroLances()
+        {
+            //Arrange
+            Usuario joao = new Usuario("Joao");
+
+            Leilao leilao = new Leilao("Playstation 3 Novo");
+
+            double[] lances = { 600, 500, 400, 300, 200, 100 };
+
+            foreach (double lance in lances)
+            {
+                leilao.Propoe(new Lance(joao, lance));
+            }
+
+
+            //Act
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avalia(leilao);
+            leiloeiro.PegaOsMaioresNo(leilao);
+
+            //Assert
+            Assert.AreEqual(3, leiloeiro.TresMaiores.Count);
+            Assert.AreEqual(600, leiloeiro.TresMaiores[0].Valor, 0.00001);
+            Assert.AreEqual(500, leiloeiro.TresMaiores[1].Valor, 0.00001);
+            Assert.AreEqual(400, leiloeiro.TresMaiores[2].Valor, 0.00001);
+        }
+
+        [Test]
+        public void DevePegarOsDoisMaioresEmDoisLances()
+        {
+            //Arrange
+            Usuario joao = new Usuario("Joao");
+
+            Leilao leilao = new Leilao("Playstation 3 Novo");
+
+            double[] lances = { 600, 500 };
+
+            foreach (double lance in lances)
+            {
+                leilao.Propoe(new Lance(joao, lance));
+            }
+
+
+            //Act
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avalia(leilao);
+            leiloeiro.PegaOsMaioresNo(leilao);
+
+            //Assert
+            Assert.AreEqual(2, leiloeiro.TresMaiores.Count);
+            Assert.AreEqual(600, leiloeiro.TresMaiores[0].Valor, 0.00001);
+            Assert.AreEqual(500, leiloeiro.TresMaiores[1].Valor, 0.00001);           
+        }
+
+        [Test]
+        public void DeveRetornarListaVazia()
+        {
+            //Arrange
+            Usuario joao = new Usuario("Joao");
+
+            Leilao leilao = new Leilao("Playstation 3 Novo");
+
+            //Act
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avalia(leilao);
+            leiloeiro.PegaOsMaioresNo(leilao);
+
+            //Assert
+            Assert.AreEqual(0, leiloeiro.TresMaiores.Count);
+        }
     }
 }

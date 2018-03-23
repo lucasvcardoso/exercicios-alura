@@ -10,7 +10,7 @@ namespace Caelum.Leilao
     {
         public double MaiorDeTodos { get; set; } = double.MinValue;
         public double MenorDeTodos { get; set; } = double.MaxValue;
-
+        public IList<Lance> TresMaiores { get; set; }
         public void Avalia(Leilao leilao)
         {
             foreach (var lance in leilao.Lances) 
@@ -35,6 +35,12 @@ namespace Caelum.Leilao
                 return media;
             }
             return 0.0;
+        }
+
+        public void PegaOsMaioresNo(Leilao leilao)
+        {
+            var filtro = leilao.Lances.OrderByDescending(l => l.Valor).Take(3);
+            TresMaiores = new List<Lance>(filtro);
         }
     }
 }
