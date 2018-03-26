@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="AvaliadorTeste.cs" />
     <Compile Include="FiltroDeLancesTest.cs" />
+    <Compile Include="LeilaoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

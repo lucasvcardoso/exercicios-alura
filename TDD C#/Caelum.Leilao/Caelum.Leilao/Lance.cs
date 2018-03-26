@@ -12,8 +12,5 @@ namespace Caelum.Leilao
             this.Usuario = usuario;
             this.Valor = valor;
         }
-
-
-
     }
 }
