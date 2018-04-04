@@ -54,6 +54,56 @@ namespace Caelum.Leilao.Testes
             //Assert
             Assert.AreEqual(1, leilao.Lances.Count);
             Assert.AreEqual(2000, leilao.Lances[0].Valor);
+
+
+
+        }
+
+        [Test]
+        public void NaoDeveAceitarMaisDoQue5LancesDoMesmoUsuario()
+        {
+            //Arrange
+            Leilao leilao = new Leilao("Macbook Pro 15");
+            Usuario steveJobs = new Usuario("Steve Jobs");
+            Usuario billGates = new Usuario("Bill Gates");
+
+            double[] lances = {
+                2000,
+                3000,
+                4000,
+                5000,
+                6000,
+                7000,
+                8000,
+                9000,
+                10000,
+                11000
+
+            };
+
+            //Act
+            int i = 1;
+            foreach (double lance in lances)
+            {
+                if (i % 2 != 0)
+                {
+                    leilao.Propoe(new Lance(steveJobs, lance));
+                }
+                else
+                {
+                    leilao.Propoe(new Lance(billGates, lance));
+                }
+                i++;
+            }
+
+            //Deve ser ignorado
+            leilao.Propoe(new Lance(steveJobs, 12000));
+
+            //Assert
+            Assert.AreEqual(10, leilao.Lances.Count);
+            int ultimo = leilao.Lances.Count - 1;
+            Lance ultimoLance = leilao.Lances[ultimo];
+            Assert.AreEqual(11000.0, ultimoLance.Valor, 0.00001);
         }
     }
 }

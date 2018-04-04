@@ -80,14 +80,24 @@ namespace Caelum.Leilao
         {
             //Arrange
             Usuario joao = new Usuario("Joao");
+            Usuario maria = new Usuario("Maria");
 
             Leilao leilao = new Leilao("Playstation 3 Novo");
 
             double[] lances = { 200, 150, 120, 700, 630, 230 };
 
+            int i = 1;
             foreach (double lance in lances)
             {
-                leilao.Propoe(new Lance(joao, lance));
+                if (i % 2 != 0)
+                {
+                    leilao.Propoe(new Lance(joao, lance));
+                }
+                else
+                {
+                    leilao.Propoe(new Lance(maria, lance));
+                }
+                i++;
             }
 
 
@@ -104,15 +114,26 @@ namespace Caelum.Leilao
         public void DeveEntenderLancesEmOrdemDecrescente()
         {
             //Arrange
+
             Usuario joao = new Usuario("Joao");
+            Usuario maria = new Usuario("Maria");
 
             Leilao leilao = new Leilao("Playstation 3 Novo");
 
             double[] lances = { 600,500,400,300,200,100 };
 
+            int i = 1;
             foreach (double lance in lances)
             {
-                leilao.Propoe(new Lance(joao, lance));
+                if (i % 2 != 0)
+                {
+                    leilao.Propoe(new Lance(joao, lance));
+                }
+                else
+                {
+                    leilao.Propoe(new Lance(maria, lance));
+                }
+                i++;
             }
 
 
@@ -130,14 +151,23 @@ namespace Caelum.Leilao
         {
             //Arrange
             Usuario joao = new Usuario("Joao");
+            Usuario maria = new Usuario("Maria");
 
             Leilao leilao = new Leilao("Playstation 3 Novo");
 
             double[] lances = { 600, 500, 400, 300, 200, 100 };
 
+            int i = 1;
             foreach (double lance in lances)
             {
-                leilao.Propoe(new Lance(joao, lance));
+                if (i % 2 != 0)
+                {
+                    leilao.Propoe(new Lance(joao, lance));
+                }else
+                {
+                    leilao.Propoe(new Lance(maria, lance));
+                }
+                i++;
             }
 
 
@@ -158,14 +188,24 @@ namespace Caelum.Leilao
         {
             //Arrange
             Usuario joao = new Usuario("Joao");
+            Usuario maria = new Usuario("Maria");
 
             Leilao leilao = new Leilao("Playstation 3 Novo");
 
             double[] lances = { 600, 500 };
 
+            int i = 1;
             foreach (double lance in lances)
             {
-                leilao.Propoe(new Lance(joao, lance));
+                if (i % 2 != 0)
+                {
+                    leilao.Propoe(new Lance(joao, lance));
+                }
+                else
+                {
+                    leilao.Propoe(new Lance(maria, lance));
+                }
+                i++;
             }
 
 
@@ -196,5 +236,7 @@ namespace Caelum.Leilao
             //Assert
             Assert.AreEqual(0, leiloeiro.TresMaiores.Count);
         }
+
+
     }
 }
