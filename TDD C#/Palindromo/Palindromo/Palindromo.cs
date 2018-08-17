@@ -10,15 +10,37 @@ namespace Palindromo
     {
         public bool EhPalindromo(string frase)
         {
-            string fraseFiltrada = frase.ToUpper().Replace(" ", "").Replace("-", "");
-            for (int i = 0; i < fraseFiltrada.Length; i++)
+            string sentence = frase.ToUpper().Replace(" ", "").Replace("-", "");
+            var counter = 0;
+            for (int i = 0; i < sentence.Length; i++)
             {
-                if (fraseFiltrada[i] != fraseFiltrada[fraseFiltrada.Length - i - 1])
+                if (sentence[i] != sentence[sentence.Length - i - 1])
+                {
+                    counter++;
+                }
+                if (counter > 1)
                 {
                     return false;
                 }
             }
-                return true;
+            return true;
+        }
+
+        public bool IsAlmostPalindrome(string word)
+        {
+            int counter = 0;
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (word[i] != word[word.Length - i - 1])
+                {
+                    counter++;
+                }
+                if (counter > 1)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         

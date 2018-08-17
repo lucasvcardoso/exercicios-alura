@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,28 @@ namespace Caelum.Leilao
     [TestFixture]
     public class AvaliadorTest
     {
+
+        private Avaliador Leiloeiro { get; set; }
+
+        //[OneTimeSetUp]
+        //public void SetUp()
+        //{
+        //    Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
+        //}
+
+        //[OneTimeTearDown]
+        //public void TearDown()
+        //{
+        //    Trace.Flush();
+        //}
+
+        [SetUp]
+        public void CriaAvaliador()
+        {
+            this.Leiloeiro = new Avaliador();
+            TestContext.Out.WriteLine("Criando avaliador");
+        }
+
         [Test]
         public void DeveEntenderLancesEmOrdemCrescente()
         {
@@ -24,15 +47,15 @@ namespace Caelum.Leilao
             leilao.Propoe(new Lance(jose, 400.0));
 
             //executando a acao
-            Avaliador leiloeiro = new Caelum.Leilao.Avaliador();
-            leiloeiro.Avalia(leilao);
-
+            
+            Leiloeiro.Avalia(leilao);
+             
             //comparando a saida com o esperado
             double maiorEsperado = 400;
             double menorEsperado = 250;
 
-            Assert.AreEqual(maiorEsperado, leiloeiro.MaiorDeTodos, 0.00001);
-            Assert.AreEqual(menorEsperado, leiloeiro.MenorDeTodos, 0.00001);
+            Assert.AreEqual(maiorEsperado, Leiloeiro.MaiorDeTodos, 0.00001);
+            Assert.AreEqual(menorEsperado, Leiloeiro.MenorDeTodos, 0.00001);
         }
 
         [Test]
@@ -49,8 +72,8 @@ namespace Caelum.Leilao
             leilao.Propoe(new Lance(jose, 550));
 
             //Act
-            Avaliador leiloeiro = new Avaliador();
-            double media = leiloeiro.CalculaMediaDosLances(leilao);
+            
+            double media = Leiloeiro.CalculaMediaDosLances(leilao);
 
             //Assert
             double expected = 400;
@@ -67,12 +90,12 @@ namespace Caelum.Leilao
             leilao.Propoe(new Lance(joao, 250));
 
             //Act
-            Avaliador leiloeiro = new Avaliador();
-            leiloeiro.Avalia(leilao);
+            
+            Leiloeiro.Avalia(leilao);
 
             //Assert
-            Assert.AreEqual(250, leiloeiro.MaiorDeTodos, 0.00001);
-            Assert.AreEqual(250, leiloeiro.MenorDeTodos, 0.00001);
+            Assert.AreEqual(250, Leiloeiro.MaiorDeTodos, 0.00001);
+            Assert.AreEqual(250, Leiloeiro.MenorDeTodos, 0.00001);
         }
 
         [Test]
@@ -102,12 +125,12 @@ namespace Caelum.Leilao
 
 
             //Act
-            Avaliador leiloeiro = new Avaliador();
-            leiloeiro.Avalia(leilao);
+            
+            Leiloeiro.Avalia(leilao);
 
             //Assert
-            Assert.AreEqual(120, leiloeiro.MenorDeTodos, 0.00001);
-            Assert.AreEqual(700, leiloeiro.MaiorDeTodos, 0.00001);
+            Assert.AreEqual(120, Leiloeiro.MenorDeTodos, 0.00001);
+            Assert.AreEqual(700, Leiloeiro.MaiorDeTodos, 0.00001);
         }
 
         [Test]
@@ -138,12 +161,12 @@ namespace Caelum.Leilao
 
 
             //Act
-            Avaliador leiloeiro = new Avaliador();
-            leiloeiro.Avalia(leilao);
+            
+            Leiloeiro.Avalia(leilao);
 
             //Assert
-            Assert.AreEqual(100, leiloeiro.MenorDeTodos, 0.00001);
-            Assert.AreEqual(600, leiloeiro.MaiorDeTodos, 0.00001);
+            Assert.AreEqual(100, Leiloeiro.MenorDeTodos, 0.00001);
+            Assert.AreEqual(600, Leiloeiro.MaiorDeTodos, 0.00001);
         }
 
         [Test]
@@ -172,15 +195,15 @@ namespace Caelum.Leilao
 
 
             //Act
-            Avaliador leiloeiro = new Avaliador();
-            leiloeiro.Avalia(leilao);
-            leiloeiro.PegaOsMaioresNo(leilao);
+            
+            Leiloeiro.Avalia(leilao);
+            Leiloeiro.PegaOsMaioresNo(leilao);
 
             //Assert
-            Assert.AreEqual(3, leiloeiro.TresMaiores.Count);
-            Assert.AreEqual(600, leiloeiro.TresMaiores[0].Valor, 0.00001);
-            Assert.AreEqual(500, leiloeiro.TresMaiores[1].Valor, 0.00001);
-            Assert.AreEqual(400, leiloeiro.TresMaiores[2].Valor, 0.00001);
+            Assert.AreEqual(3, Leiloeiro.TresMaiores.Count);
+            Assert.AreEqual(600, Leiloeiro.TresMaiores[0].Valor, 0.00001);
+            Assert.AreEqual(500, Leiloeiro.TresMaiores[1].Valor, 0.00001);
+            Assert.AreEqual(400, Leiloeiro.TresMaiores[2].Valor, 0.00001);
         }
 
         [Test]
@@ -210,14 +233,14 @@ namespace Caelum.Leilao
 
 
             //Act
-            Avaliador leiloeiro = new Avaliador();
-            leiloeiro.Avalia(leilao);
-            leiloeiro.PegaOsMaioresNo(leilao);
+            
+            Leiloeiro.Avalia(leilao);
+            Leiloeiro.PegaOsMaioresNo(leilao);
 
             //Assert
-            Assert.AreEqual(2, leiloeiro.TresMaiores.Count);
-            Assert.AreEqual(600, leiloeiro.TresMaiores[0].Valor, 0.00001);
-            Assert.AreEqual(500, leiloeiro.TresMaiores[1].Valor, 0.00001);           
+            Assert.AreEqual(2, Leiloeiro.TresMaiores.Count);
+            Assert.AreEqual(600, Leiloeiro.TresMaiores[0].Valor, 0.00001);
+            Assert.AreEqual(500, Leiloeiro.TresMaiores[1].Valor, 0.00001);           
         }
 
         [Test]
@@ -229,12 +252,12 @@ namespace Caelum.Leilao
             Leilao leilao = new Leilao("Playstation 3 Novo");
 
             //Act
-            Avaliador leiloeiro = new Avaliador();
-            leiloeiro.Avalia(leilao);
-            leiloeiro.PegaOsMaioresNo(leilao);
+            
+            Leiloeiro.Avalia(leilao);
+            Leiloeiro.PegaOsMaioresNo(leilao);
 
             //Assert
-            Assert.AreEqual(0, leiloeiro.TresMaiores.Count);
+            Assert.AreEqual(0, Leiloeiro.TresMaiores.Count);
         }
 
 
