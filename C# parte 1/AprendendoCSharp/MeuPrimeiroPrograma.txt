@@ -1,0 +1,8 @@
+using System;
+
+class Programa
+{
+	static void Main(String[] args){
+		Console.WriteLine("Olá Mundo. Este é meu primeiro programa no bloco de notas.");
+	}
+}
