@@ -5,9 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-var filmeConnection = builder.Configuration.GetConnectionString("FilmeConnection");
-
-builder.Services.AddDbContext<FilmeContext>(opt => opt.UseMySql(filmeConnection, new MySqlServerVersion(new Version(8, 0))));
+builder.Services.AddDbContext<FilmeContext>(opt => opt.UseMySQL(ConfigurationBinder.));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
