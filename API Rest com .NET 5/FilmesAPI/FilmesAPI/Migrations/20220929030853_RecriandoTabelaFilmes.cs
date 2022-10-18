@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FilmesAPI.Migrations
 {
-    public partial class CriandoTabelaDeFilme : Migration
+    public partial class RecriandoTabelaFilmes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
