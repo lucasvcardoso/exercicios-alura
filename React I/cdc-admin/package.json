@@ -8,8 +8,8 @@
   "dependencies": {
     "jquery": "^3.5.0",
     "pubsub-js": "^1.5.3",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "scripts": {
     "start": "react-scripts start",
