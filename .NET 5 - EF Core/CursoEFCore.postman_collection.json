@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "7dcd8810-787f-4ce0-8602-f0a1e06d0bb3",
+		"name": "CursoEFCore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15560818"
+	},
+	"item": [
+		{
+			"name": "Criar cinema",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Criar endereco",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Logradouro\": \"Avenida Nossa Senhora de Copacabana\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/endereco",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"endereco"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

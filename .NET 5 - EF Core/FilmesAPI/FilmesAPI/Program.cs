@@ -1,3 +1,4 @@
+using FilmesApi.Data;
 using FilmesAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 var cinemaConnection = builder.Configuration.GetConnectionString("CinemaConnection");
 
-builder.Services.AddDbContext<FilmeContext>(opt => opt.UseMySql(cinemaConnection, new MySqlServerVersion(new Version(8, 0))));
+                                                       /*UseLazyLoadingProxies habilita o uso de proxies para lazy loading de propriedades no EF Core*/
+builder.Services.AddDbContext<AppDbContext>(opt => opt.UseLazyLoadingProxies().UseMySql(cinemaConnection, new MySqlServerVersion(new Version(8, 0))));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
