@@ -23,5 +23,8 @@ namespace FilmesAPI.Models
         /// </summary>
         public virtual Endereco Endereco { get; set; }//Marcar a propriedade como virtual habilita o lazy loading no EF Core
         public int EnderecoId { get; set; }
+
+        public virtual Gerente Gerente { get; set; }
+        public int GerenteId { get; set; }
     }
 }
