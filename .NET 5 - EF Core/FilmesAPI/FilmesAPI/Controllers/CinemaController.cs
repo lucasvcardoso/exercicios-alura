@@ -37,6 +37,14 @@ namespace FilmesAPI.Controllers
         [HttpGet]
         public IEnumerable<Cinema> RecuperaCinemas()
         {
+            /*
+             Aqui temos que enumerar Cinemas antes de retornar, o que derrota o propósito de lazy loading nesse caso.
+             Caso contrário, o EF vai tentar abrir mais de um DataReader na mesma conexao, pra carregar os gerentes e enderecos de cada cinema
+             e tomar uma excecao do conector do MySQL. Em outros DBMSs, como SQL Server, a solucao seria 
+             habilitar MultipleActiveResultSets na connection string, o que possibilitaria fazer essa consulta
+             com lazy loading, mas o MySQL nao da suporte a esse recurso. Enumerando Cinemas com .ToList(), carregamos
+             os dados em memoria antes de retornar e o EF consegue carrega-los sem problema.
+             */
             return _context.Cinemas.ToList();
         }
 

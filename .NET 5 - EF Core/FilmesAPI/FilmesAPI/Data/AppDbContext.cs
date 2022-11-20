@@ -17,10 +17,12 @@ namespace FilmesApi.Data
                 .WithOne(cinema => cinema.Endereco)
                 .HasForeignKey<Cinema>(cinema => cinema.EnderecoId);
 
-            //builder.Entity<Cinema>()
-            //    .HasOne(cinema => cinema.Gerente)
-            //    .WithMany(gerente => gerente.Cinemas) 
-            //    .HasForeignKey(cinema => cinema.GerenteId);
+            builder.Entity<Cinema>()
+                .HasOne(cinema => cinema.Gerente)
+                .WithMany(gerente => gerente.Cinemas)
+                .HasForeignKey(cinema => cinema.GerenteId);
+                //.IsRequired(false) <- configura a FK como nao-obrigatoria (nullable)
+                //.OnDelete(DeleteBehavior.Restricted); <- altera o comportamento onDelete para que nao seja possivel deletar entidades que tem dependentes.
 
             base.OnModelCreating(builder);
         }
