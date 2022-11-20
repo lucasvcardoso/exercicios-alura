@@ -1,4 +1,4 @@
-﻿namespace FilmesAPI.Data.Dtos.Gerente
+﻿namespace FilmesAPI.Data.Dtos
 {
     public class CreateGerenteDto
     {
