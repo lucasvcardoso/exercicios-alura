@@ -16,5 +16,8 @@ namespace FilmesAPI.Models
         public string Genero { get; set; }
         [Range(1, 600, ErrorMessage = "A Duracao deve ser entre 1 e 600 minutos")]
         public int Duracao { get; set; } = 0;
+
+        public virtual List<Sessao> Sessoes { get; set; }
+        public int ClassificacaoEtaria { get; set; }
     }
 }
