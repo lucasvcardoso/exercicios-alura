@@ -32,7 +32,8 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global._1___Primeiro_Projeto.Frm_TelaPrincipal_01
+            Me.MainForm = Global._2___Criando_Variáveis.Frm_TelaPrincipal_02
+
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
